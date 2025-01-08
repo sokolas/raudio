@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.11)
+cmake_minimum_required(VERSION 3.26)
 project(raudio
     DESCRIPTION "raudio: A simple and easy-to-use audio library based on miniaudio"
     HOMEPAGE_URL "https://github.com/raylib5/raudio"
@@ -32,6 +32,8 @@ if (SUPPORT_SHARED_LIBRARY)
     add_library(raudio SHARED
         ${RAUDIO_SRC}/raudio.c
     )
+    include(GenerateExportHeader)
+    generate_export_header(raudio)
 else()
     add_library(raudio STATIC
         ${RAUDIO_SRC}/raudio.c
