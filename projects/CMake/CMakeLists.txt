@@ -25,11 +25,18 @@ option(SUPPORT_FILEFORMAT_QOA "QOA Support" TRUE)
 option(SUPPORT_FILEFORMAT_FLAC "FLAC Support" TRUE)
 option(SUPPORT_FILEFORMAT_XM "XM Support" TRUE)
 option(SUPPORT_FILEFORMAT_MOD "MOD Support" TRUE)
+option(SUPPORT_SHARED_LIBRARY "Support Shared Library build" FALSE)
 
 # raudio
-add_library(raudio STATIC
-    ${RAUDIO_SRC}/raudio.c
-)
+if (SUPPORT_SHARED_LIBRARY)
+    add_library(raudio SHARED
+        ${RAUDIO_SRC}/raudio.c
+    )
+else()
+    add_library(raudio STATIC
+        ${RAUDIO_SRC}/raudio.c
+    )
+endif()
 
 # Includes
 target_include_directories(raudio INTERFACE ${RAUDIO_SRC})
@@ -41,9 +48,9 @@ target_compile_definitions(raudio PUBLIC
 )
 
 # Dependenices
-target_link_libraries(raudio
-    m # math
-)
+# target_link_libraries(raudio
+#    m # math - no idea what it is, honestly
+# )
 
 # Audio file support options
 if (SUPPORT_FILEFORMAT_WAV)
