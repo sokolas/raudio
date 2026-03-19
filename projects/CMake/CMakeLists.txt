@@ -9,12 +9,12 @@ project(raudio
 option(BUILD_RAUDIO_EXAMPLES "Build the examples." OFF)
 
 # Force building examples if building in the root as standalone.
-if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-    message(CMAKE_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
-    message(CMAKE_CURRENT_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
-    message("building examples")
-    set(BUILD_RAUDIO_EXAMPLES TRUE)
-endif()
+# if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+#     message(CMAKE_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
+#     message(CMAKE_CURRENT_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
+#     message("building examples")
+#     set(BUILD_RAUDIO_EXAMPLES TRUE)
+# endif()
 
 # Directory Variables
 set(RAUDIO_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/../..)
